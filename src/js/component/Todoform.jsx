@@ -24,13 +24,9 @@ const Todoform = () => {
     setListaTodo(FilteredList);
   }
 
-  const borrarTarea=() => {
-    props.borrar(props.id)
-  }
-
   return (
     <div>
-      <div className="col-4 mx-auto d-flex justify-content-between p-2">
+      <div className="text-center p-2">
         <form className="form" onSubmit={onSubmit}>
           <span>Add To-Do</span>
           <input value={InputTodo} onChange={llenarFormulario} />
@@ -40,13 +36,14 @@ const Todoform = () => {
       <div className="flex-column">
         <div>
             {ListaTodo.map((element, index) => {
-              return <div className="col-4 mx-auto d-flex justify-content-between p-1 mb-2 bg-light text-dark border border-secondary rounded-3 ">
-                <p>{element}</p>
-                <button className="btn btn-secondary" onClick={borrarTarea}>Delete</button>
+              return <div className="col-4 mx-auto d-flex justify-content-between p-1 mb-2 bg-light text-dark border border-secondary rounded-3">
+                <p className="m-2">{element}</p>
+                <button className="btn btn-secondary" onClick={()=> borrar(index)}>Delete</button>
               </div>;
             })}
         </div>
       </div>
+      <h5 className="text-center">Tareas pendientes {ListaTodo.length}</h5>
     </div>
   );
 };
